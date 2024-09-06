@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width" />
+
+	<title>【非公式】学マス パラメータ計算機</title>
+	<link rel="stylesheet" href="style.css" />
+	<script src="script.js"></script>
+</head>
+
+<body>
+	<h1>【非公式】学マス パラメータ計算機</h1>
+	<p>前提： 「プロ」、レッスンはすべてPERFECT、最終試験は一位</p>
+	<hr>
+	<form name="mainForm">
+		<p id="debug"></p>
+		<p id="caution"><strong>※最終試験の必要スコアだけ知りたい場合</strong>は<a href="#start">画面下</a></p>
+		<p><strong>最終まで<span style="font-size: larger;">4週</span></strong>時点でのパラメータ・レッスンボーナスを入力してください</p>
+		<table>
+			<thead>
+				<tr>
+					<th scope="col"></th>
+					<th scope="col">ボーカル</th>
+					<th scope="col">ダンス</th>
+					<th scope="col">ビジュアル</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">パラメータ</th>
+					<td><input type="number" name="primary" id="primary_vocal" placeholder="0000" required min="1"
+							max="1500" tabindex="1" />
+					</td>
+					<td><input type="number" name="primary" id="primary_dance" placeholder="0000" required min="1"
+							max="1500" tabindex="2" />
+					</td>
+					<td><input type="number" name="primary" id="primary_visual" placeholder="0000" required min="1"
+							max="1500" tabindex="3" /> ...
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">レッスンボーナス</th>
+					<td><input type="number" name="primary" id="vocal_bonus" placeholder="00.0" required step="0.1"
+							min="0.1" tabindex="4" /> %
+					</td>
+					<td><input type="number" name="primary" id="dance_bonus" placeholder="00.0" required step="0.1"
+							min="0.1" tabindex="5" /> %
+					</td>
+					<td><input type="number" name="primary" id="visual_bonus" placeholder="00.0" required step="0.1"
+							min="0.1" tabindex="6" /> %
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<input type="checkbox" id="auto_select" checked>レッスン自動選択</input>
+		<div id="third_to_last">
+			<div>
+				<input type="radio" id="third_to_last_lesson_vocal" name="third_to_last_lesson" value="vocal" />
+				ボーカル
+				<input type="radio" id="third_to_last_lesson_sp_vocal" name="third_to_last_lesson" value="sp_vocal" />
+				ボーカルSP
+				<input type="radio" id="third_to_last_lesson_dance" name="third_to_last_lesson" value="dance" />
+				ダンス
+				<input type="radio" id="third_to_last_lesson_sp_dance" name="third_to_last_lesson" value="sp_dance" />
+				ダンスSP
+				<input type="radio" id="third_to_last_lesson_visual" name="third_to_last_lesson" value="visual" />
+				ビジュアル
+				<input type="radio" id="third_to_last_lesson_sp_visual" name="third_to_last_lesson" value="sp_visual" />
+				ビジュアルSP
+			</div>
+		</div>
+		<p>
+		<div><strong>最終まで<span style="font-size: larger;">3週</span></strong>
+			<div>
+				ボーカル
+				<input type="number" name="third_to_last" id="third_to_last_vocal" placeholder="0000" size="2" />
+				ダンス
+				<input type="number" name="third_to_last" id="third_to_last_dance" placeholder="0000" size="2" />
+				ビジュアル
+				<input type="number" name="third_to_last" id="third_to_last_visual" placeholder="0000" size="2" />
+			</div>
+			<div>
+				<input type="radio" id="second_to_last_lesson_vocal" name="second_to_last_lesson" value="vocal" />
+				ボーカル
+				<input type="radio" id="second_to_last_lesson_sp_vocal" name="second_to_last_lesson" value="sp_vocal" />
+				ボーカルSP
+				<input type="radio" id="second_to_last_lesson_dance" name="second_to_last_lesson" value="dance" />
+				ダンス
+				<input type="radio" id="second_to_last_lesson_sp_dance" name="second_to_last_lesson" value="sp_dance" />
+				ダンスSP
+				<input type="radio" id="second_to_last_lesson_visual" name="second_to_last_lesson" value="visual" />
+				ビジュアル
+				<input type="radio" id="second_to_last_lesson_sp_visual" name="second_to_last_lesson"
+					value="sp_visual" />
+				ビジュアルSP
+			</div>
+		</div>
+		<p>
+		<div>
+			<strong>追い込みレッスン</strong>
+			<div>
+				ボーカル
+				<input type="number" name="second_to_last" id="second_to_last_vocal" placeholder="0000" size="2" />
+				ダンス
+				<input type="number" name="second_to_last" id="second_to_last_dance" placeholder="0000" size="2" />
+				ビジュアル
+				<input type="number" name="second_to_last" id="second_to_last_visual" placeholder="0000" size="2" />
+			</div>
+			<div>
+				<input type="radio" id="last_lesson_vocal" name="last_lesson" value="vocal" />
+				ボーカル
+				<input type="radio" id="last_lesson_dance" name="last_lesson" value="dance" />
+				ダンス
+				<input type="radio" id="last_lesson_visual" name="last_lesson" value="visual" />
+				ビジュアル
+			</div>
+			<h2 id="start">最終試験開始時点</h2>
+			<div>
+				ボーカル
+				<input type="number" name="last" id="last_vocal" placeholder="0000" size="2" />
+				ダンス
+				<input type="number" name="last" id="last_dance" placeholder="0000" size="2" />
+				ビジュアル
+				<input type="number" name="last" id="last_visual" placeholder="0000" size="2" />
+			</div>
+		</div>
+		</p>
+		<p>
+		<div>最終試験後パラメータ(1位なら全パラメータ+30)</div>
+		<div>ボーカル: <span id="final_vocal" class="final auto_calculated"></span>
+			ダンス: <span id="final_dance" class="final auto_calculated"></span>
+			ビジュアル:<span id="final_visual" class="final auto_calculated"></span>
+		</div>
+
+		<p>
+			最終試験
+		<table>
+			<thead>
+				<tr>
+					<th scope="col">ランク</th>
+					<th scope="col">必要スコア</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>S</td>
+					<td>
+						<span id="s_score" class="final auto_calculated">
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<td>A+</td>
+					<td>
+						<span id="a_plus_score" class="final auto_calculated"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>A</td>
+					<td>
+						<span id="a_score" class="final auto_calculated"></span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<details>
+			<summary>評価点の詳細な内訳表</summary>
+			<table>
+				<thead>
+					<tr>
+						<th scope="col">ランク</th>
+						<th scope="col">必要スコア</th>
+						<th scope="col">必要評価点</th>
+						<th scope="col">パラメータからの評価点※1</th>
+						<th scope="col">最終試験スコアからの評価点※2</th>
+						<th scope="col">順位からの評価点</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>S</td>
+						<td>
+							<span id="_s_score" class="final auto_calculated">
+							</span>
+						</td>
+						<td>13000</td>
+						<td><span id="s_param" class="auto_calculated"></span></td>
+						<td><span id="s_test" class="auto_calculated"></span></td>
+						<td>1700<span id="s_pos_rate" class="auto_calculated"></span></td>
+					</tr>
+					<tr>
+						<td>A+</td>
+						<td>
+							<span id="_a_plus_score" class="final auto_calculated"></span>
+						</td>
+						<td>11500</td>
+						<td><span id="a_plus_param" class="auto_calculated"></span></td>
+						<td><span id="a_plus_test" class="auto_calculated"></span></td>
+						<td>1700<span id="a_plus_pos_rate" class="auto_calculated"></span></td>
+					</tr>
+					<tr>
+						<td>A</td>
+						<td>
+							<span id="_a_score" class="final auto_calculated"></span>
+						</td>
+						<td>10000</td>
+						<td><span id="a_param" class="auto_calculated"></span></td>
+						<td><span id="a_test" class="auto_calculated"></span></td>
+						<td>1700<span id="a_pos_rate" class="auto_calculated"></span></td>
+					</tr>
+				</tbody>
+			</table>
+			<ul>
+				<li> ※1: パラメータの合計に2.3をかけて小数点以下を切り捨てたもの</li>
+				<li>※2: 計算方法はページ下の参考サイトより</li>
+			</ul>
+		</details>
+
+		</p>
+		<hr>
+		<input type="reset" id="reset" value="リセット">
+	</form>
+
+	<h2>Q. 何のためのページか？</h2>
+	<p>学マスのパラメータの上限は1500なので、それを超えた上昇分は無駄になってしまいます。詳しい計算式は下記ページに載っていますが、パラメータの比重は最終評価の半分近くになるためA+, Sランクを狙う場合特に重要です。</p>
+	<p>しかし、「追い込みレッスン」では選んだ属性以外のパラメータも上がるため、A+を狙えるようになる頃には意図せずして1500を超えてしまうケースがあります。それを避けるには「追い込みレッスン」の属性を選ぶ最終週より前の段階でどの属性のレッスンを受けるべきか考えなければいけません。
+	</p>
+	<p>このページはその計算を自動化するためのものです。なお、サポートカードのイベントで不意にパラメータが上がった場合のため、手動でその都度パラメータを入力し直せるようになっています。</p>
+	</div>
+	<p>
+		参考サイト:
+	<ul>
+		<li><a href="https://note.com/suzu_hmjn/n/n87d2972f528d">学マスのレッスンにおけるパラメータ上昇量の計算式｜涼鈴</a></li>
+		<li><a href="https://seesaawiki.jp/gakumasu/d/%C4%EA%B4%FC%B8%F8%B1%E9%A1%D8%BD%E9%A1%D9#content_5_3">定期公演『初』 -
+				学園アイドルマスターwiki (学マスwiki)</a></li>
+		<li><a href="https://seesaawiki.jp/gakumasu/d/%BA%C7%BD%AA%A5%D7%A5%ED%A5%C7%A5%E5%A1%BC%A5%B9%C9%BE%B2%C1">最終プロデュース評価
+				-
+				学園アイドルマスターwiki (学マスwiki)</a></li>
+	</ul>
+	</p>
+	<p>
+		GitHub: //TODO
+	</p>
+	<p>
+		作成者: <a href="https://x.com/lamrongol">@lamrongol</a>(Bluesky: <a
+			href="https://bsky.app/profile/did:plc:wwqlk2n45es2ywkwrf4dwsr2">@lamrongol.bsky.social</a>)
+	</p>
+</body>
+
+</html>

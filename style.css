@@ -1,0 +1,68 @@
+body {
+	max-width: 800px;
+	margin: auto;
+}
+
+.flex {
+	display: flex;
+	align-items: flex-start;
+}
+
+span.final {
+	font-weight: bold;
+}
+
+input[type="number"] {
+	width: 4em;
+}
+
+/* https://stackoverflow.com/a/24543304/3809427 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	/* display: none; <- Crashes Chrome on hover */
+	-webkit-appearance: none !important;
+	margin: 0;
+	/* <-- Apparently some margin are still there even though it's hidden */
+}
+
+#caution {
+	font-size: x-large;
+}
+
+/* 
+	from:
+		<table>: 表要素 - HTML: ハイパーテキストマークアップ言語 | MDN
+		https://developer.mozilla.org/ja/docs/Web/HTML/Element/table
+*/
+table {
+	max-width: 1200px;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border: 2px solid rgb(140 140 140);
+	/* font-family: sans-serif; */
+	font-size: 0.8rem;
+	letter-spacing: 1px;
+}
+
+caption {
+	min-width: 100%;
+	text-align: left;
+	caption-side: top;
+	padding: 10px;
+	font-weight: bold;
+}
+
+thead,
+tfoot {
+	background-color: rgb(228 240 245);
+}
+
+th,
+td {
+	border: 1px solid rgb(160 160 160);
+	padding: 8px 10px;
+}
+
+td:last-of-type {
+	text-align: center;
+}
