@@ -27,46 +27,46 @@
 	<form name="mainForm">
 		<p id="debug"></p>
 		<p id="caution"><strong>※最終試験の必要スコアだけ知りたい場合</strong>は<a href="#start">画面下</a></p>
-		<p><strong>最終まで<span style="font-size: larger;">4週</span></strong>時点でのパラメータ・レッスンボーナスを入力してください</p>
-		<table>
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">ボーカル</th>
-					<th scope="col">ダンス</th>
-					<th scope="col">ビジュアル</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th scope="row">パラメータ</th>
-					<td><input type="number" name="primary" id="primary_vocal" placeholder="0000" required min="1"
-							max="1500" tabindex="1" />
-					</td>
-					<td><input type="number" name="primary" id="primary_dance" placeholder="0000" required min="1"
-							max="1500" tabindex="2" />
-					</td>
-					<td><input type="number" name="primary" id="primary_visual" placeholder="0000" required min="1"
-							max="1500" tabindex="3" /> ...
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">レッスンボーナス</th>
-					<td><input type="number" name="primary" id="vocal_bonus" placeholder="00.0" required step="0.1"
-							min="0.1" tabindex="4" /> %
-					</td>
-					<td><input type="number" name="primary" id="dance_bonus" placeholder="00.0" required step="0.1"
-							min="0.1" tabindex="5" /> %
-					</td>
-					<td><input type="number" name="primary" id="visual_bonus" placeholder="00.0" required step="0.1"
-							min="0.1" tabindex="6" /> %
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<input type="checkbox" id="auto_select" checked>レッスン自動選択</input>
-		<div id="third_to_last">
-			<div>
+		<section><strong>最終まで<span style="font-size: larger;">4週</span></strong>時点でのパラメータ・レッスンボーナスを入力してください
+			<table>
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col">ボーカル</th>
+						<th scope="col">ダンス</th>
+						<th scope="col">ビジュアル</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">パラメータ</th>
+						<td><input type="number" name="primary" id="primary_vocal" placeholder="0000" required min="1"
+								max="1500" tabindex="1" />
+						</td>
+						<td><input type="number" name="primary" id="primary_dance" placeholder="0000" required min="1"
+								max="1500" tabindex="2" />
+						</td>
+						<td><input type="number" name="primary" id="primary_visual" placeholder="0000" required min="1"
+								max="1500" tabindex="3" /> ...
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">レッスンボーナス</th>
+						<td><input type="number" name="primary" id="vocal_bonus" placeholder="00.0" required step="0.1"
+								min="0.1" tabindex="4" /> %
+						</td>
+						<td><input type="number" name="primary" id="dance_bonus" placeholder="00.0" required step="0.1"
+								min="0.1" tabindex="5" /> %
+						</td>
+						<td><input type="number" name="primary" id="visual_bonus" placeholder="00.0" required step="0.1"
+								min="0.1" tabindex="6" /> %
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="checkbox" id="auto_select" name="auto_select" checked /> <label for="auto_select">
+				レッスン自動選択</label>
+			<div id="third_to_last">
 				<input type="radio" id="third_to_last_lesson_vocal" name="third_to_last_lesson" value="vocal" />
 				ボーカル
 				<input type="radio" id="third_to_last_lesson_sp_vocal" name="third_to_last_lesson" value="sp_vocal" />
@@ -80,9 +80,9 @@
 				<input type="radio" id="third_to_last_lesson_sp_visual" name="third_to_last_lesson" value="sp_visual" />
 				ビジュアルSP
 			</div>
-		</div>
-		<p>
-		<div><strong>最終まで<span style="font-size: larger;">3週</span></strong>
+		</section>
+		<section>
+			<div><strong>最終まで<span style="font-size: larger;">3週</span></strong></div>
 			<div>
 				ボーカル
 				<input type="number" name="third_to_last" id="third_to_last_vocal" placeholder="0000" size="2" />
@@ -106,9 +106,8 @@
 					value="sp_visual" />
 				ビジュアルSP
 			</div>
-		</div>
-		<p>
-		<div>
+		</section>
+		<section>
 			<strong>追い込みレッスン</strong>
 			<div>
 				ボーカル
@@ -126,7 +125,9 @@
 				<input type="radio" id="last_lesson_visual" name="last_lesson" value="visual" />
 				ビジュアル
 			</div>
-			<h2 id="start">最終試験開始時点</h2>
+		</section>
+		<section>
+			<span style="font-size: large;"><strong>最終試験開始時点</strong></span>
 			<div>
 				ボーカル
 				<input type="number" name="last" id="last_vocal" placeholder="0000" size="2" />
@@ -135,100 +136,97 @@
 				ビジュアル
 				<input type="number" name="last" id="last_visual" placeholder="0000" size="2" />
 			</div>
-		</div>
-		</p>
-		<p>
-		<div>最終試験後パラメータ(1位なら全パラメータ+30)</div>
-		<div>ボーカル: <span id="final_vocal" class="final auto_calculated"></span>
-			ダンス: <span id="final_dance" class="final auto_calculated"></span>
-			ビジュアル:<span id="final_visual" class="final auto_calculated"></span>
-		</div>
-
-		<p>
+			<p></p>
+			<div>最終試験後パラメータ(1位なら全パラメータ+30)</div>
+			<div>ボーカル: <span id="final_vocal" class="final auto_calculated"></span>
+				ダンス: <span id="final_dance" class="final auto_calculated"></span>
+				ビジュアル:<span id="final_visual" class="final auto_calculated"></span>
+			</div>
+		</section>
+		<section>
 			最終試験
-		<table>
-			<thead>
-				<tr>
-					<th scope="col">ランク</th>
-					<th scope="col">必要スコア</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>S</td>
-					<td>
-						<span id="s_score" class="final auto_calculated">
-						</span>
-					</td>
-				</tr>
-				<tr>
-					<td>A+</td>
-					<td>
-						<span id="a_plus_score" class="final auto_calculated"></span>
-					</td>
-				</tr>
-				<tr>
-					<td>A</td>
-					<td>
-						<span id="a_score" class="final auto_calculated"></span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<details>
-			<summary>評価点の詳細な内訳表</summary>
 			<table>
 				<thead>
 					<tr>
 						<th scope="col">ランク</th>
 						<th scope="col">必要スコア</th>
-						<th scope="col">必要評価点</th>
-						<th scope="col">パラメータからの評価点※1</th>
-						<th scope="col">最終試験スコアからの評価点※2</th>
-						<th scope="col">順位からの評価点</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>S</td>
 						<td>
-							<span id="_s_score" class="final auto_calculated">
+							<span id="s_score" class="final auto_calculated">
 							</span>
 						</td>
-						<td>13000</td>
-						<td><span id="s_param" class="auto_calculated"></span></td>
-						<td><span id="s_test" class="auto_calculated"></span></td>
-						<td>1700<span id="s_pos_rate" class="auto_calculated"></span></td>
 					</tr>
 					<tr>
 						<td>A+</td>
 						<td>
-							<span id="_a_plus_score" class="final auto_calculated"></span>
+							<span id="a_plus_score" class="final auto_calculated"></span>
 						</td>
-						<td>11500</td>
-						<td><span id="a_plus_param" class="auto_calculated"></span></td>
-						<td><span id="a_plus_test" class="auto_calculated"></span></td>
-						<td>1700<span id="a_plus_pos_rate" class="auto_calculated"></span></td>
 					</tr>
 					<tr>
 						<td>A</td>
 						<td>
-							<span id="_a_score" class="final auto_calculated"></span>
+							<span id="a_score" class="final auto_calculated"></span>
 						</td>
-						<td>10000</td>
-						<td><span id="a_param" class="auto_calculated"></span></td>
-						<td><span id="a_test" class="auto_calculated"></span></td>
-						<td>1700<span id="a_pos_rate" class="auto_calculated"></span></td>
 					</tr>
 				</tbody>
 			</table>
-			<ul>
-				<li> ※1: パラメータの合計に2.3をかけて小数点以下を切り捨てたもの</li>
-				<li>※2: 計算方法はページ下の参考サイトより</li>
-			</ul>
-		</details>
-
-		</p>
+			<details>
+				<summary>評価点の詳細な内訳表</summary>
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">ランク</th>
+							<th scope="col">必要スコア</th>
+							<th scope="col">必要評価点</th>
+							<th scope="col">パラメータからの評価点※1</th>
+							<th scope="col">最終試験スコアからの評価点※2</th>
+							<th scope="col">順位からの評価点</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>S</td>
+							<td>
+								<span id="_s_score" class="final auto_calculated">
+								</span>
+							</td>
+							<td>13000</td>
+							<td><span id="s_param" class="auto_calculated"></span></td>
+							<td><span id="s_test" class="auto_calculated"></span></td>
+							<td>1700<span id="s_pos_rate" class="auto_calculated"></span></td>
+						</tr>
+						<tr>
+							<td>A+</td>
+							<td>
+								<span id="_a_plus_score" class="final auto_calculated"></span>
+							</td>
+							<td>11500</td>
+							<td><span id="a_plus_param" class="auto_calculated"></span></td>
+							<td><span id="a_plus_test" class="auto_calculated"></span></td>
+							<td>1700<span id="a_plus_pos_rate" class="auto_calculated"></span></td>
+						</tr>
+						<tr>
+							<td>A</td>
+							<td>
+								<span id="_a_score" class="final auto_calculated"></span>
+							</td>
+							<td>10000</td>
+							<td><span id="a_param" class="auto_calculated"></span></td>
+							<td><span id="a_test" class="auto_calculated"></span></td>
+							<td>1700<span id="a_pos_rate" class="auto_calculated"></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<ul>
+					<li>※1: パラメータの合計に2.3をかけて小数点以下を切り捨てたもの</li>
+					<li>※2: 計算方法はページ下の参考サイトより</li>
+				</ul>
+			</details>
+		</section>
 		<hr>
 		<input type="reset" id="reset" value="リセット">
 	</form>

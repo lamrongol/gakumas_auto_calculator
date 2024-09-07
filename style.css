@@ -3,6 +3,11 @@ body {
 	margin: auto;
 }
 
+section {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .flex {
 	display: flex;
 	align-items: flex-start;
