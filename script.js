@@ -215,7 +215,7 @@ window.onload = () => {
         if (start_idx < WEEK_DETAIL.get("last")) {
             const tmp = prior_value + calc_amount(OIKOMI_CLEAR_AMOUNT, prior_param_bonus) + calc_amount(OIKOMI_PERFECT_EACH_AMOUNT, prior_param_bonus);
             //Some events will raise parameters so set 100 safety margin.
-            if (tmp > PARAMETER_MAX - 100) {
+            if (tmp > PARAMETER_MAX - 30) {
                 document.getElementById("last_lesson_" + second_param).checked = true;
             } else {
                 document.getElementById("last_lesson_" + prior_param).checked = true;
@@ -226,7 +226,7 @@ window.onload = () => {
         if (start_idx < WEEK_DETAIL.get("second_to_last")) {
             const tmp = prior_value + calc_amount(SECOND_TO_LAST_SP_AMOUNT, prior_param_bonus);
             //Some events will raise parameters so set 70 safety margin.
-            if (tmp > PARAMETER_MAX - 70) {
+            if (tmp > PARAMETER_MAX - 60) {
                 document.getElementById("second_to_last_lesson_sp_" + second_param).checked = true;
             } else {
                 document.getElementById("second_to_last_lesson_sp_" + prior_param).checked = true;
@@ -237,7 +237,7 @@ window.onload = () => {
         if (start_idx < WEEK_DETAIL.get("third_to_last")) {
             const tmp = prior_value + calc_amount(THIRD_TO_LAST_SP_AMOUNT, prior_param_bonus);
             //Some events will raise parameters so set 30 safety margin.
-            if (tmp > PARAMETER_MAX - 30) {
+            if (tmp > PARAMETER_MAX - 100) {
                 document.getElementById("third_to_last_lesson_sp_" + second_param).checked = true;
             } else {
                 document.getElementById("third_to_last_lesson_sp_" + prior_param).checked = true;
