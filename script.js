@@ -265,6 +265,17 @@ window.onload = () => {
         radio.addEventListener("change", auto_calculate_parameter);
     });
 
+    let is_detail_open = window.sessionStorage.getItem("is_detail_open");
+    //string -> boolean
+    if (is_detail_open == null) is_detail_open = true;//first
+    else is_detail_open = (is_detail_open == "true")
+
+    const score_detail = document.getElementById("score_detail");
+    score_detail.toggleAttribute("open", is_detail_open);
+    score_detail.addEventListener("toggle", (_event) => {
+        window.sessionStorage.setItem("is_detail_open", score_detail.open);
+    });
+
 
     const auto_select_checkbox = document.getElementById("auto_select");
     auto_select_checkbox.addEventListener("change", () => {
