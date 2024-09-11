@@ -258,6 +258,9 @@ window.onload = () => {
     })
     //auto_select
     document.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener("click", (evt) => {
+            evt.target.select();
+        });
         input.addEventListener("input", auto_select_evt);
     });
     //auto_calculate
