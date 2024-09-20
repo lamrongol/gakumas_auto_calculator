@@ -32,7 +32,7 @@
 		<strong>マスター</strong>
 	</p>
 	レッスン上限上昇量:
-	<input type="number" name="primary" id="lesson_limit_up" placeholder="000" required min="0" step="5" tabindex="0" />
+	<input type="number" name="primary" id="lesson_limit_up" placeholder="000" required min="0" step="5" tabindex="1" />
 	<hr>
 	<form name="mainForm">
 		<p id="debug"></p>
@@ -51,25 +51,25 @@
 					<tr>
 						<th scope="row">パラメータ</th>
 						<td><input type="number" name="primary" id="primary_vocal" placeholder="0000" required min="1"
-								max="1500" tabindex="1" />
+								tabindex="2" />
 						</td>
 						<td><input type="number" name="primary" id="primary_dance" placeholder="0000" required min="1"
-								max="1500" tabindex="2" />
+								tabindex="3" />
 						</td>
 						<td><input type="number" name="primary" id="primary_visual" placeholder="0000" required min="1"
-								max="1500" tabindex="3" /> ...
+								tabindex="4" /> ...
 						</td>
 					</tr>
 					<tr>
 						<th scope="row">レッスンボーナス</th>
 						<td><input type="number" name="primary" id="vocal_bonus" placeholder="00.0" required step="0.1"
-								min="0.1" tabindex="4" /> %
-						</td>
-						<td><input type="number" name="primary" id="dance_bonus" placeholder="00.0" required step="0.1"
 								min="0.1" tabindex="5" /> %
 						</td>
-						<td><input type="number" name="primary" id="visual_bonus" placeholder="00.0" required step="0.1"
+						<td><input type="number" name="primary" id="dance_bonus" placeholder="00.0" required step="0.1"
 								min="0.1" tabindex="6" /> %
+						</td>
+						<td><input type="number" name="primary" id="visual_bonus" placeholder="00.0" required step="0.1"
+								min="0.1" tabindex="7" /> %
 						</td>
 					</tr>
 				</tbody>
