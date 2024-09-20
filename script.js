@@ -25,12 +25,13 @@ const WEEK_DETAIL = Object.freeze(new Map(
     ]));
 
 //@see 最終プロデュース評価 - 学園アイドルマスターwiki (学マスwiki) https://seesaawiki.jp/gakumasu/d/%BA%C7%BD%AA%A5%D7%A5%ED%A5%C7%A5%E5%A1%BC%A5%B9%C9%BE%B2%C1
-//     BORDER S: 13000, A+: 11500, A: 10000
+//     BORDER S: 13000, A+: 11500, A: 10000 //(S+: 14500)
 const RANK_EVALUATION_BORDERS = Object.freeze(new Map(
     [
         ["a", 10000],//A
         ["a_plus", 11500],//A+
-        ["s", 13000]//S
+        ["s", 13000],//S
+        ["s_plus", 14500]//S+
     ]
 ));
 const SCORE_RATES = Object.freeze(new Map(
