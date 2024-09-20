@@ -1,11 +1,19 @@
 //Declare constant value
 ////amount when perfect
-const THIRD_TO_LAST_LESSON_AMOUNT = 120;
-const THIRD_TO_LAST_SP_AMOUNT = 200;
-const SECOND_TO_LAST_LESSON_AMOUNT = 150;
-const SECOND_TO_LAST_SP_AMOUNT = 220;
+const THIRD_TO_LAST_LESSON_AMOUNT_BASE = 120;
+const THIRD_TO_LAST_SP_AMOUNT_BASE = 200;
+const SECOND_TO_LAST_LESSON_AMOUNT_BASE = 150;
+const SECOND_TO_LAST_SP_AMOUNT_BASE = 220;
 const OIKOMI_CLEAR_AMOUNT = 165;
 const OIKOMI_PERFECT_EACH_AMOUNT = 145;
+
+let THIRD_TO_LAST_LESSON_AMOUNT;
+let THIRD_TO_LAST_SP_AMOUNT;
+let SECOND_TO_LAST_LESSON_AMOUNT;
+let SECOND_TO_LAST_SP_AMOUNT;
+
+let PARAMETER_LIMIT;
+
 const PARAMETER_NAMES = Object.freeze(["vocal", "dance", "visual"]);
 const WEEK_ORDER = Object.freeze(["primary", "third_to_last", "second_to_last", "last"]);
 const WEEK_DETAIL = Object.freeze(new Map(
@@ -81,6 +89,47 @@ window.onload = () => {
         calculate_parameter(start_week);
     }
 
+    const calc_lesson_parameter = () => {
+        const lesson_limit_up_amount = get_as_number("lesson_limit_up");
+        THIRD_TO_LAST_LESSON_AMOUNT = THIRD_TO_LAST_LESSON_AMOUNT_BASE + lesson_limit_up_amount;
+        THIRD_TO_LAST_SP_AMOUNT = THIRD_TO_LAST_SP_AMOUNT_BASE + lesson_limit_up_amount;
+        SECOND_TO_LAST_LESSON_AMOUNT = SECOND_TO_LAST_LESSON_AMOUNT_BASE + lesson_limit_up_amount;
+        SECOND_TO_LAST_SP_AMOUNT = SECOND_TO_LAST_SP_AMOUNT_BASE + lesson_limit_up_amount;
+    }
+    const lesson_limit_up = document.getElementById("lesson_limit_up");
+    lesson_limit_up.addEventListener("input", calc_lesson_parameter);
+    const difficulty_change = (difficulty_level) => {
+        if (difficulty_level == "pro") {
+            PARAMETER_LIMIT = 1500;
+            lesson_limit_up.disabled = true;
+            lesson_limit_up.placeholder = "-";
+
+            THIRD_TO_LAST_LESSON_AMOUNT = THIRD_TO_LAST_LESSON_AMOUNT_BASE;
+            THIRD_TO_LAST_SP_AMOUNT = THIRD_TO_LAST_SP_AMOUNT_BASE;
+            SECOND_TO_LAST_LESSON_AMOUNT = SECOND_TO_LAST_LESSON_AMOUNT_BASE;
+            SECOND_TO_LAST_SP_AMOUNT = SECOND_TO_LAST_SP_AMOUNT_BASE;
+        } else {
+            PARAMETER_LIMIT = 1800;
+            lesson_limit_up.disabled = false;
+            lesson_limit_up.placeholder = "000";
+
+            calc_lesson_parameter();
+        }
+
+        window.sessionStorage.setItem("difficulty_level", difficulty_level);
+    };
+
+    document.getElementsByName('difficulty').forEach(input => {
+        input.addEventListener("change", (evt) => {
+            difficulty_change(evt.currentTarget.value);
+        });
+    });
+    //difficulty level
+    let difficulty_level = window.sessionStorage.getItem("difficulty_level");
+    if (difficulty_level == null) difficulty_level = "pro";//first
+    document.getElementById("difficulty_" + difficulty_level).checked = true;
+    difficulty_change(difficulty_level);
+
     const calculate_parameter = (start_week = "primary") => {
         const start_idx = WEEK_DETAIL.get(start_week);
 
@@ -131,9 +180,9 @@ window.onload = () => {
         let sum_param = 0;
         PARAMETER_NAMES.forEach(name => {
             parameters[name] += 30;
-            if (parameters[name] > 1500) {
+            if (parameters[name] > PARAMETER_LIMIT) {
                 parameters.is_over = true;
-                parameters[name] = 1500;
+                parameters[name] = PARAMETER_LIMIT;
             }
             sum_param += parameters[name];
         })
@@ -186,7 +235,6 @@ window.onload = () => {
         return;
     };
 
-    const PARAMETER_MAX = 1500;
     const auto_select_evt = (evt) => {
         auto_select(evt.currentTarget.name);
     };
@@ -215,7 +263,7 @@ window.onload = () => {
         if (start_idx < WEEK_DETAIL.get("last")) {
             const tmp = prior_value + calc_amount(OIKOMI_CLEAR_AMOUNT, prior_param_bonus) + calc_amount(OIKOMI_PERFECT_EACH_AMOUNT, prior_param_bonus);
             //Some events will raise parameters so set 100 safety margin.
-            if (tmp > PARAMETER_MAX - 30) {
+            if (tmp > PARAMETER_LIMIT - 30) {
                 document.getElementById("last_lesson_" + second_param).checked = true;
             } else {
                 document.getElementById("last_lesson_" + prior_param).checked = true;
@@ -226,7 +274,7 @@ window.onload = () => {
         if (start_idx < WEEK_DETAIL.get("second_to_last")) {
             const tmp = prior_value + calc_amount(SECOND_TO_LAST_SP_AMOUNT, prior_param_bonus);
             //Some events will raise parameters so set 70 safety margin.
-            if (tmp > PARAMETER_MAX - 60) {
+            if (tmp > PARAMETER_LIMIT - 60) {
                 document.getElementById("second_to_last_lesson_sp_" + second_param).checked = true;
             } else {
                 document.getElementById("second_to_last_lesson_sp_" + prior_param).checked = true;
@@ -237,7 +285,7 @@ window.onload = () => {
         if (start_idx < WEEK_DETAIL.get("third_to_last")) {
             const tmp = prior_value + calc_amount(THIRD_TO_LAST_SP_AMOUNT, prior_param_bonus);
             //Some events will raise parameters so set 30 safety margin.
-            if (tmp > PARAMETER_MAX - 100) {
+            if (tmp > PARAMETER_LIMIT - 100) {
                 document.getElementById("third_to_last_lesson_sp_" + second_param).checked = true;
             } else {
                 document.getElementById("third_to_last_lesson_sp_" + prior_param).checked = true;
@@ -268,6 +316,8 @@ window.onload = () => {
         radio.addEventListener("change", auto_calculate_parameter);
     });
 
+    ////Settings
+    //is_detail_open
     let is_detail_open = window.sessionStorage.getItem("is_detail_open");
     //string -> boolean
     if (is_detail_open == null) is_detail_open = true;//first
@@ -278,7 +328,6 @@ window.onload = () => {
     score_detail.addEventListener("toggle", (_event) => {
         window.sessionStorage.setItem("is_detail_open", score_detail.open);
     });
-
 
     const auto_select_checkbox = document.getElementById("auto_select");
     auto_select_checkbox.addEventListener("change", () => {

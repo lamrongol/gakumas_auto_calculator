@@ -24,7 +24,15 @@
 
 <body>
 	<h1>【非公式】学マス パラメータ計算機</h1>
-	<p>前提： 「プロ」、レッスンはすべてPERFECT、最終試験は一位</p>
+	<p>前提： レッスンはすべてPERFECT、最終試験は一位</p>
+	<p>難易度選択:
+		<input type="radio" id="difficulty_pro" name="difficulty" value="pro" />
+		プロ
+		<input type="radio" id="difficulty_master" name="difficulty" value="master" />
+		<strong>マスター</strong>
+	</p>
+	レッスン上限上昇量:
+	<input type="number" name="primary" id="lesson_limit_up" placeholder="000" required min="0" step="5" tabindex="0" />
 	<hr>
 	<form name="mainForm">
 		<p id="debug"></p>
@@ -110,7 +118,7 @@
 			</div>
 		</section>
 		<section>
-			<strong>追い込みレッスン</strong>
+			<strong>追い込みレッスン<span style="font-size: larger;">直前</span></strong>
 			<div>
 				ボーカル
 				<input type="number" name="second_to_last" id="second_to_last_vocal" placeholder="0000" size="2" />

@@ -22,8 +22,8 @@ input[type="number"] {
 }
 
 /* https://stackoverflow.com/a/24543304/3809427 */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input[type="number"]:not(#lesson_limit_up)::-webkit-outer-spin-button,
+input[type="number"]:not(#lesson_limit_up)::-webkit-inner-spin-button {
 	/* display: none; <- Crashes Chrome on hover */
 	-webkit-appearance: none !important;
 	margin: 0;
