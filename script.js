@@ -169,6 +169,8 @@ window.onload = () => {
             "visual": get_as_number(start_week + "_visual"),
             "visual_bonus": get_as_number("visual_bonus")
         }
+        if (parameters["vocal"] == 0 && parameters["dance"] == 0 && parameters["visual"] == 0 &&
+            parameters["vocal_bonus"] == 0 && parameters["dance_bonus"] == 0 && parameters["visual_bonus"] == 0) return;
 
         //last 4 week
         if (start_idx < WEEK_DETAIL.get("third_to_last")) {
@@ -223,42 +225,53 @@ window.onload = () => {
     }
 
     const calc_required_scores = (sum_param) => {
-        let required_scores = {};
-
         const param_evaluation = Math.floor(2.3 * sum_param);
         const init_evaluation = param_evaluation + 1700 /* Getting No.1 */;
+        let zero_score_exists = false;
 
         for (const [rank, rank_border] of RANK_EVALUATION_BORDERS) {
             let evaluation = init_evaluation;
-            if (evaluation >= rank_border) {
-                required_scores[rank] = 0;
-                continue;
-            }
-
             let required_score = 0;
-            for (const [score_boundary, detail] of SCORE_RATES) {
-                const tmp = evaluation + detail.max;
-                if (tmp < rank_border) {
-                    evaluation = tmp;
-                    required_score = score_boundary;
-                    continue;
-                } else {
-                    const left_required_evaluation = rank_border - evaluation;
-                    const left_required_score = Math.ceil(left_required_evaluation / detail.rate);
-                    required_scores[rank] = required_score + left_required_score;
-                    break;
-                    //TODO loop by every rank needs duplicate calculation but this prior simplicity of code. 
+            if (evaluation >= rank_border) {
+                zero_score_exists = true;
+
+                //Even if 3rd place, 500 points from rank and score would be over 4000(=1200points).
+                //So points originated from except parameters exceeds 1700 and only passing exam is enough
+                required_score = 0;
+
+                document.getElementById(rank + "_score").innerText = "0(*)";
+                document.getElementById("_" + rank + "_score").innerText = "0(*)";
+                document.getElementById(rank + "_param").innerText = param_evaluation +
+                    "(" + Math.round(param_evaluation / rank_border * 100) + "%)";
+                document.getElementById(rank + "_exam").innerText = "-";
+                document.getElementById(rank + "_pos_rate").innerText = "(" + Math.round(1700 / rank_border * 100) + "%)";
+            } else {
+                let required_score = 0;
+                for (const [score_boundary, detail] of SCORE_RATES) {
+                    const tmp = evaluation + detail.max;
+                    if (tmp < rank_border) {
+                        evaluation = tmp;
+                        required_score = score_boundary;
+                        continue;
+                    } else {
+                        const left_required_evaluation = rank_border - evaluation;
+                        const left_required_score = Math.ceil(left_required_evaluation / detail.rate);
+                        required_score = required_score + left_required_score;
+                        break;
+                        //TODO loop by every rank needs duplicate calculation but this prior simplicity of code. 
+                    }
                 }
+                document.getElementById(rank + "_score").innerText = required_score;
+                document.getElementById("_" + rank + "_score").innerText = required_score;
+                document.getElementById(rank + "_param").innerText = param_evaluation +
+                    "(" + Math.round(param_evaluation / rank_border * 100) + "%)";
+                document.getElementById(rank + "_exam").innerText = (rank_border - init_evaluation) +
+                    "(" + Math.round((rank_border - init_evaluation) / rank_border * 100) + "%)";
+                document.getElementById(rank + "_pos_rate").innerText = "(" + Math.round(1700 / rank_border * 100) + "%)";
             }
-            document.getElementById(rank + "_score").innerText = required_scores[rank];
-            document.getElementById("_" + rank + "_score").innerText = required_scores[rank];
-            document.getElementById(rank + "_param").innerText = param_evaluation +
-                "(" + Math.round(param_evaluation / rank_border * 100) + "%)";
-            document.getElementById(rank + "_test").innerText = (rank_border - init_evaluation) +
-                "(" + Math.round((rank_border - init_evaluation) / rank_border * 100) + "%)";
-            document.getElementById(rank + "_pos_rate").innerText = "(" + Math.round(1700 / rank_border * 100) + "%)";
         }
-        //debug.innerText = required_scores["s"]
+        if (zero_score_exists) document.getElementById("zero_score_description").style.display = "block";
+        else document.getElementById("zero_score_description").style.display = "none";
 
         return;
     };
@@ -283,6 +296,7 @@ window.onload = () => {
 
         const prior_param = prior_parameters[0];
         const prior_param_init_value = get_as_number(start_week + "_" + prior_param) + 30;//+30 When getting a No.1;
+        if (prior_param_init_value == 0) return;
         const prior_param_bonus = get_as_number(prior_param + "_bonus");
         const second_param = prior_parameters[1];
 
@@ -331,7 +345,7 @@ window.onload = () => {
 
     document.getElementById("reset").addEventListener("click", (_evt) => {
         document.querySelectorAll(".auto_calculated").forEach((elm) => elm.innerText = "");
-    })
+    });
     //auto_select
     document.querySelectorAll('input[type="number"]').forEach(input => {
         input.addEventListener("click", (evt) => {
