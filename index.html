@@ -5,7 +5,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 
-	<title>【非公式】学マス パラメータ計算機</title>
+	<title localization-key="title">【非公式】学マス パラメータ計算機</title>
 	<link rel="stylesheet" href="style.css" />
 	<link rel="icon" type="image/png" href="images/official_fankit/icon_B.png">
 	<link rel="apple-touch-icon" sizes="400x400" href="images/official_fankit/icon_B.png">
@@ -23,33 +23,36 @@
 </head>
 
 <body>
-	<h1>【非公式】学マス パラメータ計算機</h1>
-	<p>前提： レッスンはすべてPERFECT、最終試験は一位</p>
-	<p>難易度選択:
+	<h1 localization-key="title">【非公式】学マス パラメータ計算機</h1>
+	<p localization-key="prerequisite">前提： レッスンはすべてPERFECT、最終試験は一位</p>
+	<p><span localization-key="difficulty_level">難易度</span>:
 		<input type="radio" id="difficulty_pro" name="difficulty" value="pro" />
-		プロ
+		<span localization-key="pro">プロ</span>
 		<input type="radio" id="difficulty_master" name="difficulty" value="master" />
-		<strong>マスター</strong>
+		<strong localization-key="master">マスター</strong>
 	</p>
-	レッスン上限上昇量:
+	<span localization-key="lesson_limit_up">レッスン上限上昇量</span>:
 	<input type="number" name="primary" id="lesson_limit_up" placeholder="000" required min="0" step="5" tabindex="1" />
 	<hr>
 	<form name="mainForm">
-		<p id="debug"></p>
-		<p id="caution"><strong>※最終試験の必要スコアだけ知りたい場合</strong>は<a href="#start">画面下</a></p>
-		<section><strong>最終まで<span style="font-size: larger;">4週</span></strong>時点でのパラメータ・レッスンボーナスを入力してください
+		<p id="caution" localization-key="caution"><strong>※最終試験の必要スコア</strong>だけ知りたい場合は<a href="#final_exam">画面下</a>
+		</p>
+		<section>
+			<span localization-key="prime_values">
+				<strong>最終まで<span style="font-size: larger;">4週</span></strong>時点でのパラメータ・レッスンボーナスを入力してください。
+			</span>
 			<table>
 				<thead>
 					<tr>
 						<th scope="col"></th>
-						<th scope="col">ボーカル</th>
-						<th scope="col">ダンス</th>
-						<th scope="col">ビジュアル</th>
+						<th scope="col" localization-key="vocal">ボーカル</th>
+						<th scope="col" localization-key="dance">ダンス</th>
+						<th scope="col" localization-key="visual">ビジュアル</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<th scope="row">パラメータ</th>
+						<th scope="row" localization-key="parameters">パラメータ</th>
 						<td><input type="number" name="primary" id="primary_vocal" placeholder="0000" required min="1"
 								tabindex="2" />
 						</td>
@@ -61,7 +64,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">レッスンボーナス</th>
+						<th scope="row" localization-key="lesson_bonus">レッスンボーナス</th>
 						<td><input type="number" name="primary" id="vocal_bonus" placeholder="00.0" required step="0.1"
 								min="0.1" tabindex="5" /> %
 						</td>
@@ -74,92 +77,98 @@
 					</tr>
 				</tbody>
 			</table>
-			<input type="checkbox" id="auto_select" name="auto_select" checked /> <label for="auto_select">
+			<input type="checkbox" id="auto_select" name="auto_select" checked />
+			<label for="auto_select" localization-key="auto_select">
 				レッスン自動選択</label>
 			<div id="third_to_last">
 				<input type="radio" id="third_to_last_lesson_vocal" name="third_to_last_lesson" value="vocal" />
-				ボーカル
+				<span localization-key="vocal">ボーカル</span>
 				<input type="radio" id="third_to_last_lesson_sp_vocal" name="third_to_last_lesson" value="sp_vocal" />
-				ボーカルSP
+				<span localization-key="vocal">ボーカル</span><strong>SP</strong>
 				<input type="radio" id="third_to_last_lesson_dance" name="third_to_last_lesson" value="dance" />
-				ダンス
+				<span localization-key="dance">ダンス</span>
 				<input type="radio" id="third_to_last_lesson_sp_dance" name="third_to_last_lesson" value="sp_dance" />
-				ダンスSP
+				<span localization-key="dance">ダンス</span><strong>SP</strong>
 				<input type="radio" id="third_to_last_lesson_visual" name="third_to_last_lesson" value="visual" />
-				ビジュアル
+				<span localization-key="visual">ビジュアル</span>
 				<input type="radio" id="third_to_last_lesson_sp_visual" name="third_to_last_lesson" value="sp_visual" />
-				ビジュアルSP
+				<span localization-key="visual">ビジュアル</span><strong>SP</strong>
 			</div>
 		</section>
 		<section>
-			<div><strong>最終まで<span style="font-size: larger;">3週</span></strong></div>
+			<h3 localization-key="third_to_last">最終まで<span style="font-size: larger;">3週</span></h3>
 			<div>
-				ボーカル
+				<span localization-key="vocal">ボーカル</span>
 				<input type="number" name="third_to_last" id="third_to_last_vocal" placeholder="0000" size="2" />
-				ダンス
+				<span localization-key="dance">ダンス</span>
 				<input type="number" name="third_to_last" id="third_to_last_dance" placeholder="0000" size="2" />
-				ビジュアル
+				<span localization-key="visual">ビジュアル</span>
 				<input type="number" name="third_to_last" id="third_to_last_visual" placeholder="0000" size="2" />
 			</div>
 			<div>
 				<input type="radio" id="second_to_last_lesson_vocal" name="second_to_last_lesson" value="vocal" />
-				ボーカル
+				<span localization-key="vocal">ボーカル</span>
 				<input type="radio" id="second_to_last_lesson_sp_vocal" name="second_to_last_lesson" value="sp_vocal" />
-				ボーカルSP
+				<span localization-key="vocal">ボーカル</span><strong>SP</strong>
 				<input type="radio" id="second_to_last_lesson_dance" name="second_to_last_lesson" value="dance" />
-				ダンス
+				<span localization-key="dance">ダンス</span>
 				<input type="radio" id="second_to_last_lesson_sp_dance" name="second_to_last_lesson" value="sp_dance" />
-				ダンスSP
+				<span localization-key="dance">ダンス</span><strong>SP</strong>
 				<input type="radio" id="second_to_last_lesson_visual" name="second_to_last_lesson" value="visual" />
-				ビジュアル
+				<span localization-key="visual">ビジュアル</span>
 				<input type="radio" id="second_to_last_lesson_sp_visual" name="second_to_last_lesson"
 					value="sp_visual" />
-				ビジュアルSP
+				<span localization-key="visual">ビジュアル</span><strong>SP</strong>
 			</div>
 		</section>
 		<section>
-			<strong>追い込みレッスン<span style="font-size: larger;">直前</span></strong>
+			<h3><span localization-key="oikomi">追い込みレッスン</span><span style="font-size: larger;"
+					localization-key="kickoff">開始時点</span></h3>
 			<div>
-				ボーカル
+				<span localization-key="vocal">ボーカル</span>
 				<input type="number" name="second_to_last" id="second_to_last_vocal" placeholder="0000" size="2" />
-				ダンス
+				<span localization-key="dance">ダンス</span>
 				<input type="number" name="second_to_last" id="second_to_last_dance" placeholder="0000" size="2" />
-				ビジュアル
+				<span localization-key="visual">ビジュアル</span>
 				<input type="number" name="second_to_last" id="second_to_last_visual" placeholder="0000" size="2" />
 			</div>
 			<div>
 				<input type="radio" id="last_lesson_vocal" name="last_lesson" value="vocal" />
-				ボーカル
+				<span localization-key="vocal">ボーカル</span>
 				<input type="radio" id="last_lesson_dance" name="last_lesson" value="dance" />
-				ダンス
+				<span localization-key="dance">ダンス</span>
 				<input type="radio" id="last_lesson_visual" name="last_lesson" value="visual" />
-				ビジュアル
+				<span localization-key="visual">ビジュアル</span>
 			</div>
 		</section>
-		<section>
-			<span style="font-size: large;"><strong>最終試験開始時点</strong></span>
+		<section id="final_exam">
+			<h3><span localization-key="final_exam">最終試験</span><span style="font-size: larger;"
+					localization-key="kickoff">開始時点</span>
+			</h3>
 			<div>
-				ボーカル
+				<span localization-key="vocal">ボーカル</span>
 				<input type="number" name="last" id="last_vocal" placeholder="0000" size="2" />
-				ダンス
+				<span localization-key="dance">ダンス</span>
 				<input type="number" name="last" id="last_dance" placeholder="0000" size="2" />
-				ビジュアル
+				<span localization-key="visual">ビジュアル</span>
 				<input type="number" name="last" id="last_visual" placeholder="0000" size="2" />
 			</div>
 			<p></p>
-			<div>最終試験後パラメータ(1位なら全パラメータ+30)</div>
-			<div>ボーカル: <span id="final_vocal" class="final auto_calculated"></span>
-				ダンス: <span id="final_dance" class="final auto_calculated"></span>
-				ビジュアル:<span id="final_visual" class="final auto_calculated"></span>
+			<div localization-key="after_final">最終試験後パラメータ(1位なら全パラメータ+30)</div>
+			<div><span localization-key="vocal">ボーカル</span>: <span id="final_vocal"
+					class="final auto_calculated"></span>
+				<span localization-key="dance">ダンス</span>: <span id="final_dance" class="final auto_calculated"></span>
+				<span localization-key="visual">ビジュアル</span>:<span id="final_visual"
+					class="final auto_calculated"></span>
 			</div>
 		</section>
 		<section>
-			最終試験
+			<span localization-key="final_exam">最終試験</span>
 			<table>
 				<thead>
 					<tr>
-						<th scope="col">ランク</th>
-						<th scope="col">必要スコア</th>
+						<th scope="col" localization-key="rank">ランク</th>
+						<th scope="col" localization-key="required_score">必要スコア</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -191,17 +200,19 @@
 					</tr>
 				</tbody>
 			</table>
+			<strong id="zero_score_description" localization-key="zero_score_description"
+				style="display: none;"></strong>
 			<details id="score_detail">
-				<summary>評価点の詳細な内訳表</summary>
+				<summary localization-key="evaluation_detail">評価点の詳細な内訳表</summary>
 				<table>
 					<thead>
 						<tr>
-							<th scope="col">ランク</th>
-							<th scope="col">必要スコア</th>
-							<th scope="col">必要評価点</th>
-							<th scope="col">パラメータからの評価点※1</th>
-							<th scope="col">最終試験スコアからの評価点※2</th>
-							<th scope="col">順位からの評価点</th>
+							<th scope="col" localization-key="rank">ランク</th>
+							<th scope="col" localization-key="required_score">必要スコア</th>
+							<th scope="col" localization-key="required_points">必要評価点</th>
+							<th scope="col" localization-key="points_from_parameters">パラメータからの評価点※1</th>
+							<th scope="col" localization-key="points_from_score">最終試験スコアからの評価点※2</th>
+							<th scope="col" localization-key="points_from_ranking">順位からの評価点</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -212,8 +223,8 @@
 								</span>
 							</td>
 							<td>14500</td>
-							<td><span id="s_plus_param" class="auto_calculated"></span></td>
-							<td><span id="s_plus_test" class="auto_calculated"></span></td>
+							<td><strong id="s_plus_param" class="auto_calculated"></strong></td>
+							<td><span id="s_plus_exam" class="auto_calculated"></span></td>
 							<td>1700<span id="s_plus_pos_rate" class="auto_calculated"></span></td>
 						</tr>
 						<tr>
@@ -223,8 +234,8 @@
 								</span>
 							</td>
 							<td>13000</td>
-							<td><span id="s_param" class="auto_calculated"></span></td>
-							<td><span id="s_test" class="auto_calculated"></span></td>
+							<td><strong id="s_param" class="auto_calculated"></strong></td>
+							<td><span id="s_exam" class="auto_calculated"></span></td>
 							<td>1700<span id="s_pos_rate" class="auto_calculated"></span></td>
 						</tr>
 						<tr>
@@ -233,8 +244,8 @@
 								<span id="_a_plus_score" class="final auto_calculated"></span>
 							</td>
 							<td>11500</td>
-							<td><span id="a_plus_param" class="auto_calculated"></span></td>
-							<td><span id="a_plus_test" class="auto_calculated"></span></td>
+							<td><strong id="a_plus_param" class="auto_calculated"></strong></td>
+							<td><span id="a_plus_exam" class="auto_calculated"></span></td>
 							<td>1700<span id="a_plus_pos_rate" class="auto_calculated"></span></td>
 						</tr>
 						<tr>
@@ -243,30 +254,33 @@
 								<span id="_a_score" class="final auto_calculated"></span>
 							</td>
 							<td>10000</td>
-							<td><span id="a_param" class="auto_calculated"></span></td>
-							<td><span id="a_test" class="auto_calculated"></span></td>
+							<td><strong id="a_param" class="auto_calculated"></strong></td>
+							<td><span id="a_exam" class="auto_calculated"></span></td>
 							<td>1700<span id="a_pos_rate" class="auto_calculated"></span></td>
 						</tr>
 					</tbody>
 				</table>
-				<ul>
-					<li>※1: パラメータの合計に2.3をかけて小数点以下を切り捨てたもの</li>
-					<li>※2: 計算方法はページ下の参考サイトより</li>
-				</ul>
+				<div localization-key="points_detail_description"></div>
 			</details>
 		</section>
 		<hr>
-		<input type="reset" id="reset" value="リセット">
+		<input type="reset" id="reset">
 	</form>
 
-	<h2>Q. 何のためのページか？</h2>
-	<p>学マスのパラメータの上限は1500なので、それを超えた上昇分は無駄になってしまいます。詳しい計算式は下記ページに載っていますが、パラメータの比重は最終評価の半分近くになるためA+, Sランクを狙う場合特に重要です。</p>
-	<p>しかし、「追い込みレッスン」では選んだ属性以外のパラメータも上がるため、A+を狙えるようになる頃には意図せずして1500を超えてしまうケースがあります。それを避けるには「追い込みレッスン」の属性を選ぶ最終週より前の段階でどの属性のレッスンを受けるべきか考えなければいけません。
-	</p>
-	<p>このページはその計算を自動化するためのものです。なお、サポートカードのイベントで不意にパラメータが上がった場合のため、手動でその都度パラメータを入力し直せるようになっています。</p>
+	<h2 localization-key="what_is_for">Q. 何のためのページか？</h2>
+	<div localization-key="what_is_for_description">
+		<p>
+			学マスのパラメータの上限は1500なので、それを超えた上昇分は無駄になってしまいます。詳しい計算式は下記ページに載っていますが、パラメータの比重は最終評価の半分近くになるためA+, Sランクを狙う場合特に重要です。
+		</p>
+		<p>
+			しかし、「追い込みレッスン」では選んだ属性以外のパラメータも上がるため、A+を狙えるようになる頃には意図せずして1500(or1800)を超えてしまうケースがあります。それを避けるには「追い込みレッスン」の属性を選ぶ最終週より前の段階でどの属性のレッスンを受けるべきか考えなければいけません。
+		</p>
+		<p>
+			このページはその計算を自動化するためのものです。なお、サポートカードのイベントで不意にパラメータが上がった場合のため、手動でその都度パラメータを入力し直せるようになっています。
+		</p>
 	</div>
 	<p>
-		参考サイト:
+		<span localization-key="reference">参考サイト</span>:
 	<ul>
 		<li><a href="https://note.com/suzu_hmjn/n/n87d2972f528d">学マスのレッスンにおけるパラメータ上昇量の計算式｜涼鈴</a></li>
 		<li><a href="https://seesaawiki.jp/gakumasu/d/%C4%EA%B4%FC%B8%F8%B1%E9%A1%D8%BD%E9%A1%D9#content_5_3">定期公演『初』 -
@@ -277,12 +291,15 @@
 	</ul>
 	</p>
 	<hr>
-	<p>
+	<p localization-key="bug_report_etc">
 		バグ報告や要望などは<a href="https://github.com/lamrongol/gakumas_auto_calculator">GitHub</a>または下記SNSアカウントへ
 	</p>
 	<p>
-		作成者: <a href="https://x.com/lamrongol">@lamrongol</a>(Bluesky: <a
-			href="https://bsky.app/profile/did:plc:wwqlk2n45es2ywkwrf4dwsr2">@lamrongol.bsky.social</a>)
+		<span localization-key="author">作成者</span>:
+	<ul>
+		<li>X: <a href="https://x.com/lamrongol">@lamrongol</a></li>
+		<li>Bluesky: <a href="https://bsky.app/profile/did:plc:wwqlk2n45es2ywkwrf4dwsr2">@lamrongol.bsky.social</a></li>
+	</ul>
 	</p>
 </body>
 

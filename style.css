@@ -21,6 +21,10 @@ input[type="number"] {
 	width: 4em;
 }
 
+h3 {
+	margin: 0;
+}
+
 /* https://stackoverflow.com/a/24543304/3809427 */
 input[type="number"]:not(#lesson_limit_up)::-webkit-outer-spin-button,
 input[type="number"]:not(#lesson_limit_up)::-webkit-inner-spin-button {

@@ -45,8 +45,35 @@ const SCORE_RATES = Object.freeze(new Map(
     ]
 ));
 
+const PREPARED_LANG_SET = new Set(["ja", "en"]);
+
+let translations;
+const loadLanguage = (lang) => {
+    if (!PREPARED_LANG_SET.has(lang)) lang = "ja";
+
+    fetch(`./lang/${lang}.json`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            translations = data;
+            document.querySelectorAll('[localization-key]').forEach((element) => {
+                const key = element.getAttribute('localization-key');
+                const translated = translations[key];
+                element.innerHTML = translated;
+            });
+
+            document.title.innerText = translations["title"];
+        })
+        .catch(error => console.error('Error loading language file:', error));
+}
+
 window.onload = () => {
-    const debug = document.getElementById("debug");
+    const lang = window.navigator.language.substring(0, 2);
+    loadLanguage(lang);
 
     const form = document.forms.mainForm;
 
