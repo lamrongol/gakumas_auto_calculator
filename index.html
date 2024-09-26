@@ -53,26 +53,26 @@
 				<tbody>
 					<tr>
 						<th scope="row" localization-key="parameters">パラメータ</th>
-						<td><input type="number" name="primary" id="primary_vocal" placeholder="0000" required min="1"
-								tabindex="2" />
+						<td><input type="number" class="no-spin" name="primary" id="primary_vocal" placeholder="0000"
+								required min="1" tabindex="2" />
 						</td>
-						<td><input type="number" name="primary" id="primary_dance" placeholder="0000" required min="1"
-								tabindex="3" />
+						<td><input type="number" class="no-spin" name="primary" id="primary_dance" placeholder="0000"
+								required min="1" tabindex="3" />
 						</td>
-						<td><input type="number" name="primary" id="primary_visual" placeholder="0000" required min="1"
-								tabindex="4" /> ...
+						<td><input type="number" class="no-spin" name="primary" id="primary_visual" placeholder="0000"
+								required min="1" tabindex="4" /> ...
 						</td>
 					</tr>
 					<tr>
 						<th scope="row" localization-key="lesson_bonus">レッスンボーナス</th>
-						<td><input type="number" name="primary" id="vocal_bonus" placeholder="00.0" required step="0.1"
-								min="0.1" tabindex="5" /> %
+						<td><input type="number" class="no-spin" name="primary" id="vocal_bonus" placeholder="00.0"
+								required step="0.1" min="0.1" tabindex="5" /> %
 						</td>
-						<td><input type="number" name="primary" id="dance_bonus" placeholder="00.0" required step="0.1"
-								min="0.1" tabindex="6" /> %
+						<td><input type="number" class="no-spin" name="primary" id="dance_bonus" placeholder="00.0"
+								required step="0.1" min="0.1" tabindex="6" /> %
 						</td>
-						<td><input type="number" name="primary" id="visual_bonus" placeholder="00.0" required step="0.1"
-								min="0.1" tabindex="7" /> %
+						<td><input type="number" class="no-spin" name="primary" id="visual_bonus" placeholder="00.0"
+								required step="0.1" min="0.1" tabindex="7" /> %
 						</td>
 					</tr>
 				</tbody>
@@ -99,11 +99,14 @@
 			<h3 localization-key="third_to_last">最終まで<span style="font-size: larger;">3週</span></h3>
 			<div>
 				<span localization-key="vocal">ボーカル</span>
-				<input type="number" name="third_to_last" id="third_to_last_vocal" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="third_to_last" id="third_to_last_vocal" placeholder="0000"
+					size="2" />
 				<span localization-key="dance">ダンス</span>
-				<input type="number" name="third_to_last" id="third_to_last_dance" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="third_to_last" id="third_to_last_dance" placeholder="0000"
+					size="2" />
 				<span localization-key="visual">ビジュアル</span>
-				<input type="number" name="third_to_last" id="third_to_last_visual" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="third_to_last" id="third_to_last_visual" placeholder="0000"
+					size="2" />
 			</div>
 			<div>
 				<input type="radio" id="second_to_last_lesson_vocal" name="second_to_last_lesson" value="vocal" />
@@ -126,11 +129,14 @@
 					localization-key="kickoff">開始時点</span></h3>
 			<div>
 				<span localization-key="vocal">ボーカル</span>
-				<input type="number" name="second_to_last" id="second_to_last_vocal" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="second_to_last" id="second_to_last_vocal" placeholder="0000"
+					size="2" />
 				<span localization-key="dance">ダンス</span>
-				<input type="number" name="second_to_last" id="second_to_last_dance" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="second_to_last" id="second_to_last_dance" placeholder="0000"
+					size="2" />
 				<span localization-key="visual">ビジュアル</span>
-				<input type="number" name="second_to_last" id="second_to_last_visual" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="second_to_last" id="second_to_last_visual" placeholder="0000"
+					size="2" />
 			</div>
 			<div>
 				<input type="radio" id="last_lesson_vocal" name="last_lesson" value="vocal" />
@@ -147,11 +153,11 @@
 			</h3>
 			<div>
 				<span localization-key="vocal">ボーカル</span>
-				<input type="number" name="last" id="last_vocal" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="last" id="last_vocal" placeholder="0000" size="2" />
 				<span localization-key="dance">ダンス</span>
-				<input type="number" name="last" id="last_dance" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="last" id="last_dance" placeholder="0000" size="2" />
 				<span localization-key="visual">ビジュアル</span>
-				<input type="number" name="last" id="last_visual" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="last" id="last_visual" placeholder="0000" size="2" />
 			</div>
 			<p></p>
 			<div localization-key="after_final">最終試験後パラメータ(1位なら全パラメータ+30)</div>

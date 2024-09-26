@@ -25,13 +25,12 @@ h3 {
 	margin: 0;
 }
 
-/* https://stackoverflow.com/a/24543304/3809427 */
-input[type="number"]:not(#lesson_limit_up)::-webkit-outer-spin-button,
-input[type="number"]:not(#lesson_limit_up)::-webkit-inner-spin-button {
-	/* display: none; <- Crashes Chrome on hover */
-	-webkit-appearance: none !important;
+/* https://qiita.com/chimayu/items/58e3481305e91d188be3 */
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+	-webkit-appearance: none;
 	margin: 0;
-	/* <-- Apparently some margin are still there even though it's hidden */
+	-moz-appearance: textfield;
 }
 
 #caution {
