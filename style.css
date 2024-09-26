@@ -25,9 +25,7 @@ h3 {
 	margin: 0;
 }
 
-/* https://qiita.com/chimayu/items/58e3481305e91d188be3 */
-.no-spin::-webkit-inner-spin-button,
-.no-spin::-webkit-outer-spin-button {
+.no-spin {
 	-webkit-appearance: none;
 	margin: 0;
 	-moz-appearance: textfield;
