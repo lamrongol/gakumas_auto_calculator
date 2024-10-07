@@ -25,9 +25,13 @@ h3 {
 	margin: 0;
 }
 
-.no-spin {
+.no-spin::-webkit-outer-spin-button,
+.no-spin::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+.no-spin {
 	-moz-appearance: textfield;
 }
 

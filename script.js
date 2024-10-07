@@ -82,8 +82,11 @@ window.onload = () => {
     const form = document.forms.mainForm;
 
     const primary_vocal = document.getElementById("primary_vocal");
+    primary_vocal.value = "";
     const primary_dance = document.getElementById("primary_dance");
+    primary_dance.value = "";
     const primary_visual = document.getElementById("primary_visual");
+    primary_visual.value = "";
     const vocal_bonus = document.getElementById("vocal_bonus");
     const dance_bonus = document.getElementById("dance_bonus");
     const visual_bonus = document.getElementById("visual_bonus");

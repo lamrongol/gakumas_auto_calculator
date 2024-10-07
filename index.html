@@ -5,6 +5,10 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width" />
 
+	<meta name="twitter:card" content="summary">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="images/official_fankit/icon_B.png" />
+
 	<title localization-key="title">【非公式】学マス パラメータ計算機</title>
 	<link rel="stylesheet" href="style.css" />
 	<link rel="icon" type="image/png" href="images/official_fankit/icon_B.png">
@@ -96,13 +100,13 @@
 			<div>
 				<span localization-key="vocal">ボーカル</span>
 				<input type="number" class="no-spin" name="third_to_last" id="third_to_last_vocal" placeholder="0000"
-					size="2" />
+					size="2" tabindex="8" />
 				<span localization-key="dance">ダンス</span>
 				<input type="number" class="no-spin" name="third_to_last" id="third_to_last_dance" placeholder="0000"
-					size="2" />
+					size="2" tabindex="9" />
 				<span localization-key="visual">ビジュアル</span>
 				<input type="number" class="no-spin" name="third_to_last" id="third_to_last_visual" placeholder="0000"
-					size="2" />
+					size="2" tabindex="10" />
 			</div>
 			<div>
 				<input type="radio" id="second_to_last_lesson_vocal" name="second_to_last_lesson" value="vocal" />
@@ -126,13 +130,13 @@
 			<div>
 				<span localization-key="vocal">ボーカル</span>
 				<input type="number" class="no-spin" name="second_to_last" id="second_to_last_vocal" placeholder="0000"
-					size="2" />
+					size="2" tabindex="11" />
 				<span localization-key="dance">ダンス</span>
 				<input type="number" class="no-spin" name="second_to_last" id="second_to_last_dance" placeholder="0000"
-					size="2" />
+					size="2" tabindex="12" />
 				<span localization-key="visual">ビジュアル</span>
 				<input type="number" class="no-spin" name="second_to_last" id="second_to_last_visual" placeholder="0000"
-					size="2" />
+					size="2" tabindex="13" />
 			</div>
 			<div>
 				<input type="radio" id="last_lesson_vocal" name="last_lesson" value="vocal" />
@@ -149,11 +153,14 @@
 			</h3>
 			<div>
 				<span localization-key="vocal">ボーカル</span>
-				<input type="number" class="no-spin" name="last" id="last_vocal" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="last" id="last_vocal" placeholder="0000" size="2"
+					tabindex="14" />
 				<span localization-key="dance">ダンス</span>
-				<input type="number" class="no-spin" name="last" id="last_dance" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="last" id="last_dance" placeholder="0000" size="2"
+					tabindex="15" />
 				<span localization-key="visual">ビジュアル</span>
-				<input type="number" class="no-spin" name="last" id="last_visual" placeholder="0000" size="2" />
+				<input type="number" class="no-spin" name="last" id="last_visual" placeholder="0000" size="2"
+					tabindex="16" />
 			</div>
 			<p></p>
 			<div localization-key="after_final">最終試験後パラメータ(1位なら全パラメータ+30)</div>
