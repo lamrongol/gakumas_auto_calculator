@@ -1,6 +1,6 @@
 {
     "title": "【非公式】学マス パラメータ＆必要スコア計算機",
-    "prerequisite": "前提： レッスンはすべてPERFECT、最終試験は一位",
+    "prerequisite": "前提： レッスンはすべてPERFECT",
     "difficulty_level": "難易度",
     "pro": "プロ",
     "master": "マスター",
@@ -18,6 +18,10 @@
     "kickoff": "開始時点",
     "after_final": "最終試験後パラメータ(1位なら全パラメータ+30)",
     "final_exam": "最終試験",
+    "ranking": "順位",
+    "1st": "1位",
+    "2nd": "2位",
+    "3rd": "3位",
     "rank": "ランク",
     "required_score": "必要スコア",
     "evaluation_detail": "評価点の詳細な内訳表",

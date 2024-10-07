@@ -20,7 +20,7 @@
 
 <body>
 	<h1 localization-key="title">【非公式】学マス パラメータ＆必要スコア計算機</h1>
-	<p localization-key="prerequisite">前提： レッスンはすべてPERFECT、最終試験は一位</p>
+	<p localization-key="prerequisite">前提： レッスンはすべてPERFECT</p>
 	<p><span localization-key="difficulty_level">難易度</span>:
 		<input type="radio" id="difficulty_pro" name="difficulty" value="pro" />
 		<span localization-key="pro">プロ</span>
@@ -166,6 +166,12 @@
 		</section>
 		<section>
 			<span localization-key="final_exam">最終試験</span>
+			<label for="ranking-select" localization-key="ranking">順位:</label>
+			<select name="ranking" id="ranking-select">
+				<option value="1st" localization-key="1st" selected>1位</option>
+				<option value="2nd" localization-key="2nd">2位</option>
+				<option value="3rd" localization-key="3rd">3位</option>
+			</select>
 			<table>
 				<thead>
 					<tr>
@@ -227,7 +233,7 @@
 							<td>14500</td>
 							<td><strong id="s_plus_param" class="auto_calculated"></strong></td>
 							<td><span id="s_plus_exam" class="auto_calculated"></span></td>
-							<td>1700<span id="s_plus_pos_rate" class="auto_calculated"></span></td>
+							<td><span id="s_plus_pos_rate" class="auto_calculated"></span></td>
 						</tr>
 						<tr>
 							<td>S</td>
@@ -238,7 +244,7 @@
 							<td>13000</td>
 							<td><strong id="s_param" class="auto_calculated"></strong></td>
 							<td><span id="s_exam" class="auto_calculated"></span></td>
-							<td>1700<span id="s_pos_rate" class="auto_calculated"></span></td>
+							<td><span id="s_pos_rate" class="auto_calculated"></span></td>
 						</tr>
 						<tr>
 							<td>A+</td>
@@ -248,7 +254,7 @@
 							<td>11500</td>
 							<td><strong id="a_plus_param" class="auto_calculated"></strong></td>
 							<td><span id="a_plus_exam" class="auto_calculated"></span></td>
-							<td>1700<span id="a_plus_pos_rate" class="auto_calculated"></span></td>
+							<td><span id="a_plus_pos_rate" class="auto_calculated"></span></td>
 						</tr>
 						<tr>
 							<td>A</td>
@@ -258,7 +264,7 @@
 							<td>10000</td>
 							<td><strong id="a_param" class="auto_calculated"></strong></td>
 							<td><span id="a_exam" class="auto_calculated"></span></td>
-							<td>1700<span id="a_pos_rate" class="auto_calculated"></span></td>
+							<td><span id="a_pos_rate" class="auto_calculated"></span></td>
 						</tr>
 					</tbody>
 				</table>

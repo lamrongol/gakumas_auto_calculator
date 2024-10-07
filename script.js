@@ -213,13 +213,13 @@ window.onload = () => {
         //final
         let sum_param = 0;
         PARAMETER_NAMES.forEach(name => {
-            parameters[name] += 30;
+            parameters[name] += parameter_ranking_bonus;
             if (parameters[name] > PARAMETER_LIMIT) {
                 parameters.is_over = true;
                 parameters[name] = PARAMETER_LIMIT;
             }
             sum_param += parameters[name];
-        })
+        });
 
         PARAMETER_NAMES.forEach(param => {
             document.getElementById("final_" + param).innerText = parameters[param];
@@ -230,7 +230,7 @@ window.onload = () => {
 
     const calc_required_scores = (sum_param) => {
         const param_evaluation = Math.floor(2.3 * sum_param);
-        const init_evaluation = param_evaluation + 1700 /* Getting No.1 */;
+        const init_evaluation = param_evaluation + ranking_evaluation;
         let zero_score_exists = false;
 
         for (const [rank, rank_border] of RANK_EVALUATION_BORDERS) {
@@ -239,8 +239,6 @@ window.onload = () => {
             if (evaluation >= rank_border) {
                 zero_score_exists = true;
 
-                //Even if 3rd place, 500 points from rank and score would be over 4000(=1200points).
-                //So points originated from except parameters exceeds 1700 and only passing exam is enough
                 required_score = 0;
 
                 document.getElementById(rank + "_score").innerText = "0(*)";
@@ -248,7 +246,7 @@ window.onload = () => {
                 document.getElementById(rank + "_param").innerText = param_evaluation +
                     "(" + Math.round(param_evaluation / rank_border * 100) + "%)";
                 document.getElementById(rank + "_exam").innerText = "-";
-                document.getElementById(rank + "_pos_rate").innerText = "(" + Math.round(1700 / rank_border * 100) + "%)";
+                document.getElementById(rank + "_pos_rate").innerText = ranking_evaluation + "(" + Math.round(ranking_evaluation / rank_border * 100) + "%)";
             } else {
                 let required_score = 0;
                 for (const [score_boundary, detail] of SCORE_RATES) {
@@ -271,7 +269,7 @@ window.onload = () => {
                     "(" + Math.round(param_evaluation / rank_border * 100) + "%)";
                 document.getElementById(rank + "_exam").innerText = (rank_border - init_evaluation) +
                     "(" + Math.round((rank_border - init_evaluation) / rank_border * 100) + "%)";
-                document.getElementById(rank + "_pos_rate").innerText = "(" + Math.round(1700 / rank_border * 100) + "%)";
+                document.getElementById(rank + "_pos_rate").innerText = ranking_evaluation + "(" + Math.round(ranking_evaluation / rank_border * 100) + "%)";
             }
         }
         if (zero_score_exists) document.getElementById("zero_score_description").style.display = "block";
@@ -299,7 +297,7 @@ window.onload = () => {
             .sort((a, b) => get_as_number(b + "_bonus") - get_as_number(a + "_bonus"));
 
         const prior_param = prior_parameters[0];
-        const prior_param_init_value = get_as_number(start_week + "_" + prior_param) + 30;//+30 When getting a No.1;
+        const prior_param_init_value = get_as_number(start_week + "_" + prior_param) + parameter_ranking_bonus;
         if (prior_param_init_value == 0) return;
         const prior_param_bonus = get_as_number(prior_param + "_bonus");
         const second_param = prior_parameters[1];
@@ -309,7 +307,7 @@ window.onload = () => {
         if (start_idx < WEEK_DETAIL.get("last")) {
             const tmp = prior_value + calc_amount(OIKOMI_CLEAR_AMOUNT, prior_param_bonus) + calc_amount(OIKOMI_PERFECT_EACH_AMOUNT, prior_param_bonus);
             //Some events will raise parameters so set 100 safety margin.
-            if (tmp > PARAMETER_LIMIT - 30) {
+            if (tmp > PARAMETER_LIMIT - parameter_ranking_bonus) {
                 document.getElementById("last_lesson_" + second_param).checked = true;
             } else {
                 document.getElementById("last_lesson_" + prior_param).checked = true;
@@ -330,7 +328,7 @@ window.onload = () => {
         //last 4 week
         if (start_idx < WEEK_DETAIL.get("third_to_last")) {
             const tmp = prior_value + calc_amount(THIRD_TO_LAST_SP_AMOUNT, prior_param_bonus);
-            //Some events will raise parameters so set 30 safety margin.
+            //Some events will raise parameters so set `parameter_ranking_bonus`(e.g. 30 when 1st) safety margin.
             if (tmp > PARAMETER_LIMIT - 100) {
                 document.getElementById("third_to_last_lesson_sp_" + second_param).checked = true;
             } else {
@@ -389,5 +387,25 @@ window.onload = () => {
                 input.addEventListener("input", auto_calculate_parameter);
             });
         }
+    });
+
+    let ranking_evaluation = 1700;
+    let parameter_ranking_bonus = 30;
+    document.getElementById("ranking-select").addEventListener("change", (evt) => {
+        switch (evt.target.value) {
+            case '1st':
+                ranking_evaluation = 1700;
+                parameter_ranking_bonus = 30;
+                break
+            case '2nd':
+                ranking_evaluation = 900;
+                parameter_ranking_bonus = 20;
+                break
+            case '3rd':
+                ranking_evaluation = 500;
+                parameter_ranking_bonus = 10;
+                break
+        };
+        calculate_parameter(start_week = 'last');
     });
 }

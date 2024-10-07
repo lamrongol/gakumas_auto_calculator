@@ -1,6 +1,6 @@
 {
     "title": "[Unofficial] Gakumas parameters and required score Calculator",
-    "prerequisite": "Prerequisite: all lessons are PERFECT, Final exam is first place",
+    "prerequisite": "Prerequisite: all lessons are PERFECT",
     "difficulty_level": "Difficulty level",
     "pro": "Pro",
     "master": "Master",
@@ -18,6 +18,10 @@
     "kickoff": " Kickoff",
     "after_final": "Parameters after final exam(All parameters +30 if first place)",
     "final_exam": "Final exam",
+    "ranking": "ranking",
+    "1st": "1st",
+    "2nd": "2nd",
+    "3rd": "3rd",
     "rank": "Rank",
     "required_score": "Required score",
     "evaluation_detail": "Detail of evaluation points",
