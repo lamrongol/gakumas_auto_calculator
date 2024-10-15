@@ -309,7 +309,7 @@ window.onload = () => {
         //oikomi
         if (start_idx < WEEK_DETAIL.get("last")) {
             const tmp = prior_value + calc_amount(OIKOMI_CLEAR_AMOUNT, prior_param_bonus) + calc_amount(OIKOMI_PERFECT_EACH_AMOUNT, prior_param_bonus);
-            //Some events will raise parameters so set 100 safety margin.
+            //Some events will raise parameters so set safety margin.
             if (tmp > PARAMETER_LIMIT - parameter_ranking_bonus) {
                 document.getElementById("last_lesson_" + second_param).checked = true;
             } else {
@@ -320,8 +320,8 @@ window.onload = () => {
         //last 3 week
         if (start_idx < WEEK_DETAIL.get("second_to_last")) {
             const tmp = prior_value + calc_amount(SECOND_TO_LAST_SP_AMOUNT, prior_param_bonus);
-            //Some events will raise parameters so set 70 safety margin.
-            if (tmp > PARAMETER_LIMIT - 60) {
+            //Some events will raise parameters so set additional 20 safety margin.
+            if (tmp > PARAMETER_LIMIT - parameter_ranking_bonus - 20) {
                 document.getElementById("second_to_last_lesson_sp_" + second_param).checked = true;
             } else {
                 document.getElementById("second_to_last_lesson_sp_" + prior_param).checked = true;
@@ -331,8 +331,8 @@ window.onload = () => {
         //last 4 week
         if (start_idx < WEEK_DETAIL.get("third_to_last")) {
             const tmp = prior_value + calc_amount(THIRD_TO_LAST_SP_AMOUNT, prior_param_bonus);
-            //Some events will raise parameters so set `parameter_ranking_bonus`(e.g. 30 when 1st) safety margin.
-            if (tmp > PARAMETER_LIMIT - 100) {
+            //Some events will raise parameters so set additional 40 safety margin.
+            if (tmp > PARAMETER_LIMIT - parameter_ranking_bonus - 40) {
                 document.getElementById("third_to_last_lesson_sp_" + second_param).checked = true;
             } else {
                 document.getElementById("third_to_last_lesson_sp_" + prior_param).checked = true;
